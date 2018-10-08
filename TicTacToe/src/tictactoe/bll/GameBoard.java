@@ -13,9 +13,9 @@ public class GameBoard implements IGameModel
 {
     
     int currentPlayer = 1;
-    String[][] game = new String[3][3];
+    String[][] gameboard = new String[3][3];
     boolean isGameFinished = false;
-    int counter=0;
+    int roundCounter=0;
     
     
     /**
@@ -41,10 +41,10 @@ public class GameBoard implements IGameModel
      */
     public boolean play(int col, int row)
     {
-        if(game[col][row] == null && !isGameFinished)
+        if(gameboard[col][row] == null && !isGameFinished)
         {
-            game[col][row] = currentPlayer == 1 ? "X" : "O";
-            counter++;
+            gameboard[col][row] = currentPlayer == 1 ? "X" : "O";
+            roundCounter++;
             return true;
         }
         else
@@ -62,21 +62,21 @@ public class GameBoard implements IGameModel
     {
         for (int i = 0; i < 3; i++) 
         {
-            if(((game[i][0] == game[i][1] && game[i][1] == game[i][2]) && game[i][0] != null)
-                   || ((game[0][i] == game[1][i] && game[1][i] == game[2][i]) && game[0][i] != null))
+            if(((gameboard[i][0] == gameboard[i][1] && gameboard[i][1] == gameboard[i][2]) && gameboard[i][0] != null)
+                   || ((gameboard[0][i] == gameboard[1][i] && gameboard[1][i] == gameboard[2][i]) && gameboard[0][i] != null))
             {
                 isGameFinished = true;
                 return true; 
             }
             
         }
-        if(((game[0][0] == game[1][1] && game[1][1] == game[2][2]) && game[0][0] != null)
-                   || ((game[0][2] == game[1][1] && game[1][1] == game[2][0]) && game[0][2] != null))
+        if(((gameboard[0][0] == gameboard[1][1] && gameboard[1][1] == gameboard[2][2]) && gameboard[0][0] != null)
+                   || ((gameboard[0][2] == gameboard[1][1] && gameboard[1][1] == gameboard[2][0]) && gameboard[0][2] != null))
         {
             isGameFinished = true;
             return true;
         }
-        if(counter==9)
+        if(roundCounter==9)
         {
             isGameFinished = true;
             return true;
@@ -93,9 +93,9 @@ public class GameBoard implements IGameModel
     
     public int getWinner()
     {
-        if(currentPlayer ==1 && counter!=9)
+        if(currentPlayer ==1 && roundCounter!=9)
             return 1;
-        if(currentPlayer == 2 && counter!=9)
+        if(currentPlayer == 2 && roundCounter!=9)
             return 2;
         else
             return -1;
@@ -107,11 +107,11 @@ public class GameBoard implements IGameModel
     public void newGame()
     {
         currentPlayer = 1;
-        counter=0;
+        roundCounter=0;
         isGameFinished = false;
         for (int i = 0; i < 3; i++) 
             for(int j=0; j<3; j++)
-                game[i][j] = null;
+                gameboard[i][j] = null;
                    
     }
 
