@@ -90,9 +90,9 @@ public class GameBoard implements IGameModel
     
     public int getWinner()
     {
-        if(currentPlayer ==1 && isGameFinished= == false)
+        if(currentPlayer ==1 && isGameFinished == false)
             return 1;
-        if(currentPlayer == 2 && isGameFinsihed == false)
+        if(currentPlayer == 2 && isGameFinished == false)
             return 2;
         else
             return -1;
