@@ -75,14 +75,11 @@ public class GameBoard implements IGameModel
         {
             isGameFinished = true;
             return true;
-        }
-        if(roundCounter==9)
-        {
+        }else if (roundCounter == 9){
             isGameFinished = true;
             return true;
-        }
-        
-        return false;
+        }else return false;
+       
     }
 
     /**
@@ -93,9 +90,9 @@ public class GameBoard implements IGameModel
     
     public int getWinner()
     {
-        if(currentPlayer ==1 && roundCounter!=9)
+        if(currentPlayer ==1 && isGameFinished= == false)
             return 1;
-        if(currentPlayer == 2 && roundCounter!=9)
+        if(currentPlayer == 2 && isGameFinsihed == false)
             return 2;
         else
             return -1;
